@@ -1,4 +1,6 @@
-
+const firstNumber = a
+const operators = ['+', '-', 'x', '÷']
+const secondNumber = b
 
 function add(a, b){
     return a + b
