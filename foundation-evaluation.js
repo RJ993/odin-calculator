@@ -1,3 +1,7 @@
+const firstNumber = ''
+const operators = ['+', '-', 'x', '÷']
+const secondNumber = ''
+
 function add(a, b){
     return a + b
 }
@@ -13,10 +17,6 @@ function multiply(a, b){
 function divide(a, b){
     return a/b
 }
-
-const firstNumber = a
-const operators = ['+', '-', 'x', '÷']
-const secondNumber = b
 
 function operate(firstNumber, secondNumber){
     if(operators.at(0)){
