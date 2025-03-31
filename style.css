@@ -30,7 +30,7 @@ button{
 .container{
     background-color: black;
     width: 504px;
-    height: 604px;
+    height: 624px;
     margin: 32px;
     border: 2px, solid, white;
     display: flex;
@@ -83,5 +83,11 @@ button{
     font-size: 50px;
     width: 60px;
     height: 143px;
+    margin-bottom: 10px;
+}
+
+/* IDs */
+
+#backspace{
     margin-bottom: 10px;
 }

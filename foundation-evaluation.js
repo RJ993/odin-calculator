@@ -18,6 +18,9 @@ const subtractButton = document.querySelector('#subtract')
 const multiplyButton = document.querySelector('#multiply')
 const divideButton = document.querySelector('#divide')
 const clearButton = document.querySelector('#clear')
+const decimal = document.querySelector('#decimal')
+const neg = document.querySelector('#negative')
+const backspace = document.querySelector('#backspace')
 let inputArray = []
 let operationSelection = ''
 
@@ -63,6 +66,8 @@ function operate(){
             displayAnswer()
         }
     }
+
+    inputArray = []
 
     const equal = document.querySelector('#operate')
         equal.removeEventListener('click', operate)
@@ -196,6 +201,29 @@ zero.addEventListener('click', (e) => {
     display.append('0')
     }
 });
+decimal.addEventListener('click', (e) =>{
+    let displaySize = inputArray.length
+    if(displaySize < 13 && !inputArray.includes('.')){
+    newCalc()
+    inputArray.push('.')
+    display.append('.')
+    }
+})
+neg.addEventListener('click', (e) =>{
+    let displaySize = inputArray.length
+    if(displaySize > 0 && displaySize < 13 && !inputArray.includes('-')){
+    newCalc()
+    inputArray.unshift('-')
+    display.append('-', display.firstChild)
+    }else if(inputArray.includes('-')){
+        inputArray.shift('-')
+        display.removeChild(display.firstChild)
+    }
+})
+backspace.addEventListener('click', (e) => {
+        inputArray.pop()
+        display.removeChild(display.lastChild)
+})
 
 addButton.addEventListener('click', (e) => {
     reset()
