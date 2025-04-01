@@ -1,4 +1,5 @@
 let firstNumber = null
+let firstNumberString = ''
 const operators = ['+', '-', 'x', '÷']
 let secondNumber = null
 let result = null
@@ -23,6 +24,7 @@ const neg = document.querySelector('#negative')
 const backspace = document.querySelector('#backspace')
 let inputArray = []
 let operationSelection = ''
+let operationChoice = ''
 
 function add(a, b){
     return a+b
@@ -46,6 +48,8 @@ function divide(a, b){
 
 function operate(){
     reset()
+    let firstNumber = Number(firstNumberString)
+    let operationSelection = operationChoice
     let newNumber = inputArray.reduce((wholeNumber, digit) => wholeNumber + digit, "")
     secondNumber = Number(newNumber)
     if(operationSelection === operators.at(0)){
@@ -75,13 +79,13 @@ function operate(){
 
 function getFirstData(){
     if (result !== null){
-        firstNumber = result
+        firstNumberString = result.toString()
         inputArray = []
-    }else if (firstNumber !== null){
+    }else if (firstNumberString !== ''){
         operate()
     }else{
         let newNumber = inputArray.reduce((wholeNumber, digit) => wholeNumber + digit, "")
-        firstNumber = Number(newNumber)
+        firstNumberString = newNumber
         inputArray = []
     }
 }
@@ -95,9 +99,11 @@ function reset(){
 function clear(){
     reset()
     firstNumber = null
+    firstNumberString = ''
     secondNumber = null
     result = null
     operationSelection = ''
+    operationChoice = ''
     inputArray = []
 }
 
@@ -114,7 +120,7 @@ function newCalc(){
 }
 
 function displayAnswer(){
-    if (result.toString().length <= 13){
+    if (result.toString().length <= 13 || result.toString().includes('.')){
         display.append(Math.round(result*100000000000)/100000000000)
     }else if (result.toString().length > 13){
         display.append(result.toExponential(1))
@@ -227,22 +233,22 @@ backspace.addEventListener('click', (e) => {
 
 addButton.addEventListener('click', (e) => {
     reset()
-    operationSelection = operators.at(0)
+    operationChoice = operators.at(0)
     saveFirst()
 })
 subtractButton.addEventListener('click', (e) => {
     reset()
-    operationSelection = operators.at(1)
+    operationChoice = operators.at(1)
     saveFirst()
 })
 multiplyButton.addEventListener('click', (e) => {
     reset()
-    operationSelection = operators.at(2)
+    operationChoice = operators.at(2)
     saveFirst()
 })
 divideButton.addEventListener('click', (e) => {
     reset()
-    operationSelection = operators.at(3)
+    operationChoice = operators.at(3)
     saveFirst()
 })
 clearButton.addEventListener('click', (e) => {
