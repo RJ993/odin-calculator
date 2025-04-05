@@ -122,6 +122,12 @@ function displayAnswer(){
     }
 }
 
+window.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`button[key="${e.key}"]`)
+    if(!key) return; // stops function from running
+    key.click()
+})
+
 one.addEventListener('click', (e) => {
     let displaySize = inputArray.length
     if(displaySize < 13){
