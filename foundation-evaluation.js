@@ -239,7 +239,7 @@ neg.addEventListener('click', (e) =>{
     if(displaySize > 0 && displaySize < 13 && !inputArray.includes('-')){
     newCalc()
     inputArray.unshift('-')
-    display.append('-', display.firstChild)
+    display.insertAdjacentText("afterbegin", '-')
     }else if(inputArray.includes('-')){
         inputArray.shift('-')
         display.removeChild(display.firstChild)
