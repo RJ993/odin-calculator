@@ -21,6 +21,7 @@ const clearButton = document.querySelector('#clear')
 const decimal = document.querySelector('#decimal')
 const neg = document.querySelector('#negative')
 const backspace = document.querySelector('#backspace')
+const buttons = document.querySelectorAll('button')
 let inputArray = []
 let operationSelection = ''
 
@@ -122,6 +123,11 @@ function displayAnswer(){
     }
 }
 
+function removeTransition(e){
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('press')
+}
+
 window.addEventListener('keydown', (e) => {
     const key = document.querySelector(`button[key="${e.key}"]`)
     if(!key) return; // stops function from running
@@ -129,6 +135,7 @@ window.addEventListener('keydown', (e) => {
 })
 
 one.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -137,6 +144,7 @@ one.addEventListener('click', (e) => {
     }
 });
 two.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -145,6 +153,7 @@ two.addEventListener('click', (e) => {
     }
 });
 three.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -153,6 +162,7 @@ three.addEventListener('click', (e) => {
     }
 });
 four.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -161,6 +171,7 @@ four.addEventListener('click', (e) => {
     }
 });
 five.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -169,6 +180,7 @@ five.addEventListener('click', (e) => {
     }
 });
 six.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -177,6 +189,7 @@ six.addEventListener('click', (e) => {
     }
 });
 seven.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -185,6 +198,7 @@ seven.addEventListener('click', (e) => {
     }
 });
 eight.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -193,6 +207,7 @@ eight.addEventListener('click', (e) => {
     }
 });
 nine.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -201,6 +216,7 @@ nine.addEventListener('click', (e) => {
     }
 });
 zero.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13){
     newCalc()
@@ -209,6 +225,7 @@ zero.addEventListener('click', (e) => {
     }
 });
 decimal.addEventListener('click', (e) =>{
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize < 13 && !inputArray.includes('.')){
     newCalc()
@@ -217,6 +234,7 @@ decimal.addEventListener('click', (e) =>{
     }
 })
 neg.addEventListener('click', (e) =>{
+    e.target.classList.add('press')
     let displaySize = inputArray.length
     if(displaySize > 0 && displaySize < 13 && !inputArray.includes('-')){
     newCalc()
@@ -228,30 +246,38 @@ neg.addEventListener('click', (e) =>{
     }
 })
 backspace.addEventListener('click', (e) => {
+        e.target.classList.add('press')
         inputArray.pop()
         display.removeChild(display.lastChild)
 })
 
 addButton.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     reset()
     operationSelection = operators.at(0)
     saveFirst()
 })
 subtractButton.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     reset()
     operationSelection = operators.at(1)
     saveFirst()
 })
 multiplyButton.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     reset()
     operationSelection = operators.at(2)
     saveFirst()
 })
 divideButton.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     reset()
     operationSelection = operators.at(3)
     saveFirst()
 })
 clearButton.addEventListener('click', (e) => {
+    e.target.classList.add('press')
     clear()
 })
+
+buttons.forEach(button => button.addEventListener('transitionend', removeTransition))

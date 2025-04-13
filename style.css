@@ -23,6 +23,7 @@ body{
 button{
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 900;
+    transition: all, 0.1s;
 }
 
 /* Classes */
@@ -84,6 +85,10 @@ button{
     width: 60px;
     height: 143px;
     margin-bottom: 10px;
+}
+
+.press{
+    transform: scale(0.9);
 }
 
 /* IDs */
